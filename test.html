@@ -16,21 +16,21 @@
   <meta name="author" content="南京大学绿色心情社会实践小组">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Document        test      test button">
+    <meta name="description" content="#container1 {       max-width: 400px;       margin: 0 auto;       background-color: #fff;       padding: 20px;       border-radius: 8px;       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);     }">
 <meta property="og:type" content="website">
-<meta property="og:title" content="自定义页面测试">
+<meta property="og:title" content="垃圾分类查询">
 <meta property="og:url" content="https://greenmoodnju.github.io/test.html">
 <meta property="og:site_name" content="垃圾分类|绿色心情">
-<meta property="og:description" content="Document        test      test button">
+<meta property="og:description" content="#container1 {       max-width: 400px;       margin: 0 auto;       background-color: #fff;       padding: 20px;       border-radius: 8px;       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);     }">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-01-30T08:14:53.590Z">
-<meta property="article:modified_time" content="2024-01-30T08:14:53.590Z">
+<meta property="article:published_time" content="2024-02-06T03:46:55.208Z">
+<meta property="article:modified_time" content="2024-02-06T03:46:55.208Z">
 <meta property="article:author" content="南京大学绿色心情社会实践小组">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>自定义页面测试 - 垃圾分类|绿色心情</title>
+  <title>垃圾分类查询 - 垃圾分类|绿色心情</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -173,6 +173,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/test.html" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>查询垃圾分类</span>
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -202,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="自定义页面测试"></span>
+            <span id="subtitle" data-typed-text="垃圾分类查询"></span>
           
         </div>
 
@@ -231,20 +243,140 @@
 
 <article class="page-content">
   
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> test </h1>
-    <button>test button</button>
-    <br> <br>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=399353368&auto=1&height=66"></iframe>
-</body>
-</html>
+<style>
+    #container1 {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #queryButton {
+        background-color: #8bd3c6; /* 浅绿色 */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px; /* 圆角 */
+        cursor: pointer;
+    }
+
+    #result1 {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #dictionarySection {
+        margin-top: 30px;
+    }
+
+    #dictionaryList {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    #dictionaryList li {
+        margin-bottom: 5px;
+    }
+</style>
+
+<div id="container1">
+    <h2>垃圾查询</h2>
+    <label for="trashInput">请输入垃圾名称：</label>
+    <input type="text" id="trashInput" placeholder="例如：塑料瓶">
+    <button onclick="queryTrash()" id="queryButton">查询</button>
+    <div id="result1"></div>
+
+    <div id="dictionarySection">
+        <h3>垃圾分类字典</h3>
+        <ul id="dictionaryList">
+          <!-- JavaScript 将在下方插入垃圾分类信息 -->
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    // 预先存储好的垃圾分类字典
+    var trashDictionary = {
+        '塑料瓶': '可回收垃圾',
+        '纸张': '可回收垃圾',
+        '食物残渣': '厨余垃圾',
+        '废电池': '有害垃圾',
+        '金属罐': '可回收垃圾',
+        '电子设备': '可回收垃圾',
+        '玻璃瓶': '可回收垃圾',
+        '草稿纸': '可回收垃圾',
+        '废弃食用油': '有害垃圾',
+        '衣物': '其他垃圾',
+        '玩具': '其他垃圾',
+        '塑料袋': '其他垃圾',
+        '药品': '有害垃圾',
+        '厨房纸': '其他垃圾',
+        '灯泡': '有害垃圾',
+        '报纸': '可回收垃圾',
+        '旧书': '可回收垃圾',
+        '废弃家具': '其他垃圾',
+        '一次性餐具': '其他垃圾',
+        '塑料垃圾桶': '可回收垃圾',
+        '金属钥匙': '可回收垃圾',
+        '废弃纸箱': '可回收垃圾',
+        '橡胶手套': '其他垃圾',
+        '洗发水瓶': '可回收垃圾',
+        '废弃风扇': '可回收垃圾',
+        '废旧电线': '可回收垃圾',
+        '塑料餐盒': '可回收垃圾',
+        '废弃剧本': '可回收垃圾',
+        '废弃油漆桶': '有害垃圾',
+        '过期的药片': '有害垃圾',
+        '打印纸': '可回收垃圾',
+        '旧衣服': '其他垃圾',
+        '废旧玩具': '其他垃圾',
+        '过期化妆品': '有害垃圾',
+        '一次性筷子': '其他垃圾',
+        '烟蒂': '其他垃圾',
+        '废旧电池': '有害垃圾',
+        '废弃笔记本': '可回收垃圾',
+        '废旧塑料袋': '可回收垃圾',
+        '废旧钢琴': '其他垃圾',
+        '过期的食品': '厨余垃圾',
+        '废旧玻璃器皿': '可回收垃圾',
+        '废旧塑料椅': '可回收垃圾',
+        '废旧钢铁': '可回收垃圾',
+        '废弃电子产品': '可回收垃圾',
+        '废旧橡胶': '可回收垃圾',
+        '废旧衣架': '可回收垃圾',
+        '废弃手机': '可回收垃圾',
+        '废旧玩偶': '其他垃圾',
+        '废旧木材': '可回收垃圾',
+        // 在这里添加更多的垃圾名称和分类
+      };
+
+    function queryTrash() {
+        var trashName = document.getElementById('trashInput').value;
+        var resultDiv = document.getElementById('result1');
+
+        // 根据字典查询垃圾分类
+        var trashCategory = trashDictionary[trashName];
+
+        if (trashCategory) {
+            resultDiv.textContent = '垃圾种类：' + trashCategory;
+        } else {
+            resultDiv.textContent = '未找到相关信息';
+        }
+    }
+
+    var dictionaryList = document.getElementById('dictionaryList');
+    for (var trashName in trashDictionary) {
+        var listItem = document.createElement('li');
+        listItem.textContent = trashName + ': ' + trashDictionary[trashName];
+        dictionaryList.appendChild(listItem);
+    }
+</script>
+
 
   
 

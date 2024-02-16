@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="垃圾分类|绿色心情">
 <meta property="og:description" content="#container1 {       max-width: 400px;       margin: 0 auto;       background-color: #fff;       padding: 20px;       border-radius: 8px;       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);     }">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-06T03:46:55.208Z">
-<meta property="article:modified_time" content="2024-02-06T03:46:55.208Z">
+<meta property="article:published_time" content="2024-02-16T07:45:08.619Z">
+<meta property="article:modified_time" content="2024-02-16T07:45:08.619Z">
 <meta property="article:author" content="南京大学绿色心情社会实践小组">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -255,11 +255,11 @@
 
     #queryButton {
         background-color: #8bd3c6; /* 浅绿色 */
-        color: #fff;
         border: none;
         padding: 10px 20px;
-        border-radius: 5px; /* 圆角 */
+        border-radius: 20px; /* 圆角 */
         cursor: pointer;
+        display: inline;
     }
 
     #result1 {
@@ -281,21 +281,26 @@
     #dictionaryList li {
         margin-bottom: 5px;
     }
+
+    #trashInput {
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ddd;
+        display: inline;
+    }
 </style>
 
 <div id="container1">
     <h2>垃圾查询</h2>
-    <label for="trashInput">请输入垃圾名称：</label>
-    <input type="text" id="trashInput" placeholder="例如：塑料瓶">
-    <button onclick="queryTrash()" id="queryButton">查询</button>
+    <span>
+        <label for="trashInput">请输入垃圾名称：</label>
+        <input type="text" id="trashInput" list="typelist" placeholder="例如：塑料瓶">
+        <datalist id="typelist"></datalist>
+        <button onclick="queryTrash()" id="queryButton">查询</button>
+    </span>
+    
     <div id="result1"></div>
 
-    <div id="dictionarySection">
-        <h3>垃圾分类字典</h3>
-        <ul id="dictionaryList">
-          <!-- JavaScript 将在下方插入垃圾分类信息 -->
-        </ul>
-    </div>
 
 </div>
 
@@ -369,11 +374,11 @@
         }
     }
 
-    var dictionaryList = document.getElementById('dictionaryList');
+    var dictionaryList = document.getElementById('typelist');
     for (var trashName in trashDictionary) {
-        var listItem = document.createElement('li');
-        listItem.textContent = trashName + ': ' + trashDictionary[trashName];
-        dictionaryList.appendChild(listItem);
+        var option = document.createElement('option');
+        option.value = trashName;
+        dictionaryList.appendChild(option);
     }
 </script>
 
